@@ -43,7 +43,7 @@ class _WeatherHomeState extends State<WeatherHome> {
   @override
   Widget build(BuildContext context) {
     String formattedDate = DateFormat(
-      "EEEE D, MMMM yyyy",
+      "EEEE ,d MMMM yyyy",
     ).format(DateTime.now());
     String formattedTime = DateFormat("hh:mm a").format(DateTime.now());
     return SafeArea(
