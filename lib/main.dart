@@ -1,18 +1,28 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
-import 'package:openweatherapi/screens/weather_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:openweatherapi/provider/theme/theme.dart';
+import 'package:openweatherapi/provider/theme_provider.dart';
+import 'package:openweatherapi/screens/splash_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode = ref.watch(themeNotifierProvider);
     return MaterialApp(
-      debugShowCheckedModeBanner:false,
-      home:WeatherHome(),
+      theme:lightTheme,
+      darkTheme:darkTheme,
+      themeMode:themeMode,
+    debugShowCheckedModeBanner: false,
+    home: SplashScreen()
     );
   }
 }
