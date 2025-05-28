@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 const String apiKey = "2c04b222ee7842f39f9183145252705"; //used your api Key
 
 class WeatherApiService {
-  final String _baseUrl = "https://www.weatherapi.com/v1";
+  final String _baseUrl = "https://api.weatherapi.com/v1";
   Future<Map<String, dynamic>> getHourlyForecast(String location) async {
     final url = Uri.parse(
       "$_baseUrl/forecast.json?key=$apiKey&q=$location&days=7",
@@ -26,7 +26,7 @@ class WeatherApiService {
   }
 
   //for previous 7 day forecast
-  Future<List<Map<String, dynamic>>> getLastSevenDaysWeather(
+  Future<List<Map<String, dynamic>>> getPastSevenDaysWeather(
     String location,
   ) async {
     final List<Map<String, dynamic>> pastWeather = [];
